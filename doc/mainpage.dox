@@ -1,0 +1,89 @@
+/*! \mainpage Práctica 4: TDA lineales. Listas, pilas, colas y colas con prioridad
+@image html ./escudo_ugr.png
+
+### F. Javier Ortiz Molinero, Jorge Rodríguez Lechuga
+### 2º DGIIM
+### Estructura de Datos
+
+
+# 1. Introducción
+Los tipos de datos abstractos lineales se componen de una secuencia de elementos, a 0, a1, ..., an-1 dispuestos en una dimensión. Las estructuras de datos lineales más relevantes son:
+Vectores 1-d
+Listas
+Pilas (LIFO)
+Colas (FIFO)
+
+Los nombres LIFO y FIFO hacen referencia a cómo se accede a los datos. Así, tenemos LIFO (Last Input First Output), que hace referencia a las colecciones en las que el último elemento en entrar es el primero en salir. Por otro lado, la política FIFO (First Input First Output) hace referencia a las colecciones en las que el primero en entrar es el primero en salir. Esta es la principal diferencia que existe entre las pilas y colas.
+
+## 1.1. Colas
+Cuando utilizamos una política FIFO, indicamos que las inserciones se realizan en la posición inmediatamente posterior al final de la estructura (back), y que los borrados y consultas de valores se hacen en la primera posición de la estructura (front). Esta es la política de acceso que implementan las colas.
+De esta manera, si tenemos la secuencia de elementos 1, 2, 3, y vamos a almacenar dicha información en una cola, insertaremos los elementos siempre por la posición back.
+@image html ./Insercion_cola.png
+Cuando se consulta o se extrae un dato en la cola, siempre lo haremos por la posición del frente, por lo que no podremos acceder a los elementos que están detrás del frente hasta que no eliminemos dicho valor.
+@image html ./Extraccion_cola.png
+
+Una estructura de tipo cola deberá contar, como mínimo, con los siguientes métodos para su correcto funcionamiento:
+Colocar un elemento al final de la cola.
+Consultar el elemento al principio de la cola (sin extraerlo).
+Extraer el elemento al principio de la cola.
+Consultar el tamaño de la cola (número de elementos que la componen).
+Consultar si la cola está vacía.
+
+## 1.2. Pilas
+Cuando utilizamos una política LIFO, indicamos que las inserciones y las consultas de valores se realizan en la primera posición de la estructura. Esta es la política de acceso que implementan las pilas.
+Mientras que la representación de las colas es bastante intuitiva en horizontal, y tiene sentido tener las posiciones front y back diferenciadas, en la pila sólo podremos interactuar con una posición, ya que insertamos y extraemos por el mismo punto. Por lo tanto, podemos ver la pila como una estructura en vertical, donde vamos poniendo y quitando elementos de la parte superior. Por este motivo, la posición de inserción y extracción de las pilas se suele denominar top.
+@image html ./LIFO_pila.png
+
+Una estructura de tipo pila deberá contar, como mínimo, con los siguientes métodos para su correcto funcionamiento:
+Colocar un elemento en la parte superior de la pila.
+Consultar el elemento en la parte superior de la pila (sin extraerlo).
+Extraer el elemento en la parte superior de la pila.
+Consultar el tamaño de la pila (número de elementos que la componen).
+Consultar si la pila está vacía.
+
+# 2. TDA's MaxStack y MaxQueue
+En esta práctica trabajaremos con dos TDA abstractos, que implementarán una cola y una pila con máximos. Estas dos estructuras serán capaces de almacenar la siguiente información:
+En cada posición, un número entero.
+Adicionalmente, nos permitirán almacenar el valor máximo en la estructura en cada momento.
+
+Para poder dotar a nuestras estructuras de esta funcionalidad, y como en cada caso sólo se nos permite consultar un elemento (el top de la pila o el front de la cola), lo que almacenaremos en cada posición es un par de dos enteros (construiremos un struct para ello): uno con el valor actual, y otro con el valor máximo. De esta forma, podemos saber tanto el valor que se encuentra en la posición actual, como el valor máximo que hay almacenado en la estructura.
+
+En cuanto a la implementación de la información que se almacena en cada elemento de la estructura, optaremos por un struct como el siguiente:
+struct element {
+	int value; // Current value to store
+	int maximum; // Current max value in the structure
+}
+
+@image html ./Insertarvarios.png
+
+# 3. Ejecutables
+Ambos ejecutables tienen el mismo objetivo. Se leen los argumentos dados, si el argumento es un número, lo añade a la estructura correspondiente (pila o cola), si es un punto, saca el elemento que toque de la estructura.
+
+Para MaxStack, la llamada:
+
+./build/pila_max 1 2 . 3 4 . . .
+Debe dar la siguiente salida:
+
+2,2
+
+4,4
+
+3,3
+
+1,1
+
+Para MaxQueue, la llamada:
+
+./build/pila_max 1 2 . 3 4 . . .
+
+Debe dar la siguiente salida:
+
+1,2
+
+2,4
+
+3,4
+
+4,4
+
+*/

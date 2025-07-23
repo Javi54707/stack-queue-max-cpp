@@ -1,0 +1,10 @@
+*.o
+*.out
+*.exe
+*.bin
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+build/
+bin/

@@ -16,7 +16,9 @@ Implementation of a stack and a queue data structure that support constant-time 
 
 ## ▶️ How to Run
   ```bash
-# <args> represents the integers you want in the stack or queue. If it is an integer, it is pushed to the strucuture, if it is a dot '.', it pops the corresponding element of the structure.
+# <args> represents the integers you want in the stack or queue. If it is
+# an integer, it is pushed to the strucuture, if it is a dot '.', it pops
+# the corresponding element of the structure.
   ./cmake-build-debug/bin/pila_max <args>
   ./cmake-build-debug/bin/cola_max <args>
   ```
